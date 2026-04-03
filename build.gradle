@@ -75,6 +75,10 @@ war {
     enabled = false
 }
 
+tasks.register('dockerBuild', Exec) {
+	commandLine 'docker', 'build', '-t', "${rootProject.name}:${version}", '.'
+}
+
 publishing {
     publications {
 		MavenPublication(MavenPublication) {
