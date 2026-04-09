@@ -1,3 +1,9 @@
+# Pense à ceci :
+# le job build n'est pas défini dans ce template et il devrait etre géré par le workflow appelant.
+# needs: build
+
+
+
 name: Template CI
 
 on:
