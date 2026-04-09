@@ -6,6 +6,6 @@ on:
 
 jobs:
   ci:
-    uses: .github/workflows/ci-template.yml@dev
+    uses: Elriccc/Projet4_Back_End/.github/workflows/ci-template.yml@dev
     with:
       app: back
