@@ -1,0 +1,11 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  ci:
+    uses: .github/workflows/ci-template.yml@main
+    with:
+      app: back
