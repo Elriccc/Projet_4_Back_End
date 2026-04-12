@@ -1,0 +1,11 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  ci:
+    uses: Elriccc/Projet_4_Back_End/.github/workflows/ci-template.yml@dev
+    with:
+      app: back

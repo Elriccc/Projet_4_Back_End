@@ -15,6 +15,8 @@ COPY --from=builder /app/build/libs/*war app.war
 RUN chown -R spring:spring /app
 USER spring
 
+ARG VERSION
+ENV APP_VERSION=$VERSION
 ENV JAVA_TOOL_OPTIONS="-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0"
 EXPOSE 8080
 
