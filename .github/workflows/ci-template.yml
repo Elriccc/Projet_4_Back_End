@@ -112,14 +112,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Install semantic-release
-        run: |
-          npm install -D semantic-release \
-            @semantic-release/commit-analyzer \
-            @semantic-release/release-notes-generator \
-            @semantic-release/changelog \
-            @semantic-release/git \
-            @semantic-release/github \
-            @semantic-release/exec
+        run: npm install
 
       - name: Run semantic-release
         env:
