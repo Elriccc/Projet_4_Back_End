@@ -7,7 +7,7 @@ mkdir -p "$OUTPUT_DIR"
 NODE_REPORTS_DIR="reports"
 GRADLE_REPORTS_DIR="build/test-results/test"
 
-if [ -f "package.json" ]; then
+if [ -f "package-lock.json" ]; then
     npm test
     if [ -d "$NODE_REPORTS_DIR" ]; then
       cp -r "$NODE_REPORTS_DIR"/*.xml "$OUTPUT_DIR"/
