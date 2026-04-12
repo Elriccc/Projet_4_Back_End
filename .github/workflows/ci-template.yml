@@ -75,8 +75,6 @@ jobs:
           tags: |
             ghcr.io/${{ github.repository }}-${{ inputs.app }}:sha-${{ github.sha }}
             ghcr.io/${{ github.repository }}-${{ inputs.app }}:${{ github.ref_name }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
 
   release:
     needs: test
@@ -138,5 +136,3 @@ jobs:
           tags: |
             ghcr.io/${{ github.repository }}-${{ inputs.app }}:${{ steps.semver.outputs.version }}
             ghcr.io/${{ github.repository }}-${{ inputs.app }}:latest
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
