@@ -119,11 +119,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx semantic-release
 
-      - name: Get version
-        id: semver
+      - name: Set version
         run: |
-          VERSION=$(git describe --tags --abbrev=0)
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          if [ "${{ inputs.app }}" = "front" ]; then
+            VERSION=$(node -p "require('./package.json').version")
+          else
+            VERSION=$(cat .version)
+          fi
+
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v4
@@ -138,7 +142,7 @@ jobs:
           context: .
           push: true
           build-args: |
-            VERSION=${{ steps.semver.outputs.version }}
+            VERSION=${{ env.VERSION }}
           tags: |
-            ${{ steps.image.outputs.image }}:${{ steps.semver.outputs.version }}
+            ${{ steps.image.outputs.image }}:${{ env.VERSION }}
             ${{ steps.image.outputs.image }}:latest
