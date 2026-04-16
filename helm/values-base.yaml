@@ -1,0 +1,31 @@
+app:
+  name: workshop-organizer-app
+  image: ghcr.io/elriccc/projet_4_back_end-back
+  tag: "1.1.0"
+  replicaCount: 1
+  port: 8080
+
+db:
+  name: workshop-organizer-db
+  image: postgres
+  tag: "13"
+  port: 5432
+  database: workshop-organizer-database
+
+secret:
+  name: workshop-organizer-db-secret
+  username: postgres
+  password: oc2024
+  dockerRegistry: regcred
+
+pvc:
+  name: workshop-organizer-db-pvc
+  size: 1Gi
+
+service:
+  app:
+    name: workshop-organizer-app-service
+    port: 8080
+  db:
+    name: workshop-organizer-db-service
+    port: 5432

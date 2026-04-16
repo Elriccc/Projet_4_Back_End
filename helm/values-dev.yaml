@@ -1,0 +1,9 @@
+app:
+  tag: "dev"
+  replicaCount: 1
+
+secret:
+  dockerRegistry: devcred
+
+pvc:
+  size: 500Mi
